@@ -28,6 +28,14 @@
     // Dispose of any resources that can be recreated.
 }
 
+-(IBAction)testEvent:(id)sender {
+    
+    [TestFlight passCheckpoint:@"TEST_EVENT"];
+    [TestFlight flush];
+        
+    
+}
+
 -(IBAction)crashAction:(id)sender {
     
     [TestFlight passCheckpoint:@"crashAction"];
@@ -39,6 +47,7 @@
                                     repeats:NO];
     
     [TestFlight passCheckpoint:@"crashAction ended"];
+    [TestFlight flush];
 }
 
 

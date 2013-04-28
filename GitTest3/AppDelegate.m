@@ -7,12 +7,22 @@
 //
 
 #import "AppDelegate.h"
+#import "TestFlight.h"
 
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Override point for customization after application launch.
+    
+#define TESTING 1
+#ifdef TESTING
+    [TestFlight setDeviceIdentifier:[[UIDevice currentDevice] uniqueIdentifier]];
+#endif
+    
+    [TestFlight takeOff:@"63f3e193-395a-4037-a77d-e74c29c5ebf3"];
+    // The rest of your application:didFinishLaunchingWithOptions method// ...
+    
     return YES;
 }
 							

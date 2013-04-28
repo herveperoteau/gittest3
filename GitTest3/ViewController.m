@@ -7,6 +7,8 @@
 //
 
 #import "ViewController.h"
+#import "TestFlight.h"
+
 
 @interface ViewController ()
 
@@ -25,5 +27,19 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+-(IBAction)crashAction:(id)sender {
+    
+    [TestFlight passCheckpoint:@"crashAction"];
+    
+    [NSTimer scheduledTimerWithTimeInterval:0.1
+                                     target:self
+                                   selector:@selector(fake_selector:)
+                                   userInfo:nil
+                                    repeats:NO];
+    
+    [TestFlight passCheckpoint:@"crashAction ended"];
+}
+
 
 @end
